@@ -96,6 +96,21 @@
     filter: saturate(1);
   }
 
+  .works-featured-swiper .swiper-wrapper {
+    align-items: center;
+  }
+
+  .works-featured-swiper .swiper-slide {
+    opacity: 1;
+    transform: none;
+    transition: transform 700ms ease;
+  }
+
+  .works-featured-swiper .swiper-slide-active {
+    opacity: 1;
+    transform: none;
+  }
+
   @media (max-width: 767px) {
     .about-hero-copy,
     .about-hero-copy p {

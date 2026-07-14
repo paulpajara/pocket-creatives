@@ -1,5 +1,13 @@
-import HowWeWorkPage, { Head as HowWeWorkHead } from "./how-we-work";
+import React from "react";
+import { PageChrome } from "../components/layout/PageChrome";
+import { WorksPortfolioPage } from "../components/works/WorksPortfolioPage";
 
-export default HowWeWorkPage;
+export default function WorksPage() {
+  return (
+    <PageChrome activeLabel="Works" rootClassName="min-h-screen bg-pocket-canvas">
+      <WorksPortfolioPage />
+    </PageChrome>
+  );
+}
 
-export const Head = HowWeWorkHead;
+export const Head = () => <title>Works | Pocket Creatives</title>;

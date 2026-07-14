@@ -30,6 +30,95 @@ export const navItems = [
   { label: "Pricing", href: "/pricing/" }
 ];
 
+export const worksPortfolioPage = {
+  categories: [
+    "Beauty",
+    "Product",
+    "Events",
+    "Crowdfunding",
+    "Fashion",
+    "People",
+    "Jewellery",
+    "TV Ads",
+    "HR",
+    "Education",
+    "Explainers",
+    "Social First"
+  ],
+  featured: [
+    {
+      eyebrow: "Photo Comp",
+      title: "Photography Campaign",
+      type: "Photo",
+      image: asset("works/portfolio/works-gallery-photo-comp.jpg"),
+      alt: "Stacked beauty pots on a yellow set",
+      width: 360
+    },
+    {
+      eyebrow: "HairO Brand Advert",
+      title: "Beauty Video Production",
+      type: "Video",
+      image: null,
+      alt: "Yellow campaign placeholder",
+      width: 800,
+      fill: "yellow"
+    },
+    {
+      eyebrow: "Nursem",
+      title: "People & Portrait Photography",
+      type: "Photo",
+      image: asset("works/portfolio/works-image95.jpg"),
+      alt: "Beauty model smiling in a campaign image",
+      width: 300
+    },
+    {
+      eyebrow: "Soap And Glory",
+      title: "People & Portrait Photography",
+      type: "Photo Comp",
+      image: asset("works/portfolio/works-image97.jpg"),
+      alt: "Soap and Glory skincare products on a pink set",
+      width: 450
+    }
+  ],
+  categoryIntro: {
+    title: "Category: Beauty",
+    copy:
+      "Beauty is where details matter. Texture, tone, skin, product finish and movement all need to feel considered, so we plan each shoot around the visual quality the brand needs to communicate. From social-first films to clean product photography, our team builds content that feels polished, useful and ready to perform.",
+    links: [
+      { label: "Beauty Videography", href: "#beauty-videography" },
+      { label: "Beauty Photography", href: "#beauty-photography" }
+    ]
+  },
+  videoItems: [
+    { title: "Client 1.1", image: asset("video-beauty-desktop-thumb.png"), alt: "Beauty video thumbnail with skincare model" },
+    { title: "Client 1.2", image: asset("works/portfolio/works-rect-130.jpg"), alt: "Ayumi skincare products arranged in a circle" },
+    { title: "Client 2", image: asset("video-food-drink-thumb.png"), alt: "Tortilla video thumbnail" },
+    { title: "Client 3.1", image: asset("video-sample-3.png"), alt: "Food video production thumbnail" },
+    { title: "Client 3.2", image: asset("video-beauty-thumb.png"), alt: "Gatineau beauty video thumbnail" },
+    { title: "Client 3.3", image: asset("hero-director-a.png"), alt: "Production director in a studio" },
+    { title: "Client 4", image: asset("video-carousel.png"), alt: "Mixed video production thumbnails" },
+    { title: "Client 5", image: asset("hero-video.png"), alt: "Pocket Creatives billboard" },
+    { title: "Client 6.1", image: asset("works/portfolio/works-rect-133.jpg"), alt: "Soap product under water" },
+    { title: "Client 6.2", image: asset("video-beauty-desktop-thumb.png"), alt: "Beauty video thumbnail" },
+    { title: "Client 7", image: asset("works/portfolio/works-rect-130.jpg"), alt: "Ayumi skincare product video thumbnail" },
+    { title: "Client 8", image: asset("video-food-drink-thumb.png"), alt: "Tortilla video thumbnail" }
+  ],
+  photoItems: [
+    { title: "Client 1.1", image: asset("works/portfolio/works-image97.jpg"), alt: "Beauty products on a pink display" },
+    { title: "Client 1.2", image: asset("works/portfolio/works-rect-126.jpg"), alt: "Makeup artist applying lipstick" },
+    { title: "Client 2", image: asset("works/portfolio/works-rect-127.jpg"), alt: "Beauty portrait in water" },
+    { title: "Client 3.1", image: asset("works/portfolio/works-rect-128.jpg"), alt: "Pressed cosmetic powder close up" },
+    { title: "Client 3.2", image: asset("works/portfolio/works-rect-129.jpg"), alt: "Cosmetic bottle with purple backdrop" },
+    { title: "Client 4", image: asset("works/portfolio/works-rect-130.jpg"), alt: "Ayumi products arranged around a bowl" },
+    { title: "Client 5.1", image: asset("works/portfolio/works-rect-131.jpg"), alt: "Soft beauty portrait" },
+    { title: "Client 5.2", image: asset("works/portfolio/works-rect-132.jpg"), alt: "Holy Lama skincare product" },
+    { title: "Client 6", image: asset("works/portfolio/works-rect-133.jpg"), alt: "Soap product under water" },
+    { title: "Client 7.1", image: asset("works/portfolio/works-rect-134.jpg"), alt: "Beauty portrait with colourful makeup" },
+    { title: "Client 7.2", image: asset("works/portfolio/works-rect-135.jpg"), alt: "Beauty model in black lingerie" },
+    { title: "Client 8", image: asset("works/portfolio/works-rect-136.jpg"), alt: "Makeup artist applying eye makeup" }
+  ]
+};
+
 export const pricingHero = {
   eyebrow: "Avoiding the taboo:",
   title: "Pricing for video production and photography",
