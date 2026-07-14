@@ -2,7 +2,7 @@ import React from "react";
 import { Mail } from "lucide-react";
 import { asset } from "../../data/siteContent";
 
-export function WorksIntro({ onContactClick }) {
+export function HowWeWorkIntro({ onContactClick }) {
   return (
     <section className="relative h-[922px] bg-pocket-canvas max-lg:h-auto max-lg:min-h-0 max-lg:pb-[64px] max-lg:pt-[182px]">
       <div className="relative mx-auto h-full max-w-[1920px] max-lg:flex max-lg:flex-col max-lg:gap-0 max-lg:px-[28px]">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { worksProcessItems } from "../../data/siteContent";
+import { howWeWorkProcessItems } from "../../data/siteContent";
 import { OutlineNumber } from "../shared/OutlineNumber";
 import { cn } from "../../utils/cn";
 
@@ -14,7 +14,7 @@ function GiantStepNumber({ number }) {
   );
 }
 
-export function WorksProcess() {
+export function HowWeWorkProcess() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -24,7 +24,7 @@ export function WorksProcess() {
         <GiantStepNumber number="1" />
 
         <div className="absolute left-[126px] top-[175px] w-[1189px] max-lg:static max-lg:w-full wide:left-[226px] wide:top-[314px] wide:w-[1437px]">
-          {worksProcessItems.map((item, index) => {
+          {howWeWorkProcessItems.map((item, index) => {
             const isActive = activeIndex === index;
             const isLongTitle = item.title.length > 32;
 

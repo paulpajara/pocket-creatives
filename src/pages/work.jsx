@@ -1,5 +1,5 @@
-import WorksPage, { Head as WorksHead } from "./works";
+import HowWeWorkPage, { Head as HowWeWorkHead } from "./how-we-work";
 
-export default WorksPage;
+export default HowWeWorkPage;
 
-export const Head = WorksHead;
+export const Head = HowWeWorkHead;

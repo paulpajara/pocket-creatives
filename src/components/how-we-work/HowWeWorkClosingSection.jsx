@@ -12,7 +12,7 @@ function GiantThree() {
   );
 }
 
-export function WorksClosingSection() {
+export function HowWeWorkClosingSection() {
   return (
     <section className="relative h-[882px] bg-pocket-yellow max-lg:h-auto max-lg:px-[14px] max-lg:py-[48px] wide:h-[955px]">
       <div className="relative mx-auto h-full max-w-[1920px] overflow-hidden max-lg:flex max-lg:flex-col max-lg:gap-[18px]">

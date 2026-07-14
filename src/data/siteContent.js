@@ -573,7 +573,7 @@ export const aboutStoryItems = [
   }
 ];
 
-export const worksProcessItems = [
+export const howWeWorkProcessItems = [
   {
     title: "It starts by understanding",
     copy: [

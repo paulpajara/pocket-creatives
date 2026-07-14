@@ -12,7 +12,7 @@ function GiantOutlineNumber({ number, className }) {
   );
 }
 
-export function WorksStorySection() {
+export function HowWeWorkStorySection() {
   return (
     <section className="relative h-[1460px] bg-pocket-canvas max-lg:h-auto max-lg:border-t-[3px] max-lg:border-pocket-blue max-lg:px-4 max-lg:pb-[38px] max-lg:pt-[35px] wide:h-[1533px]">
       <div className="relative mx-auto h-full max-w-[1920px] overflow-hidden max-lg:flex max-lg:h-full max-lg:flex-col max-lg:gap-0">
