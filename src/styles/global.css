@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 128px;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    margin: 0;
+    width: 100vw;
+    background: #f2f2f2;
+    color: #0b0e10;
+    font-family: "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  #___gatsby,
+  #gatsby-focus-wrapper {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
+  header,
+  main,
+  main > section,
+  footer {
+    width: 100vw;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid #32d6ff;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-[37px];
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase text-pocket-muted;
+  }
+
+  .mobile-menu-social-icon {
+    filter: brightness(0) saturate(100%) invert(42%) sepia(14%) saturate(946%) hue-rotate(166deg) brightness(91%) contrast(87%);
+  }
+
+  .about-works-swiper {
+    overflow: hidden !important;
+  }
+
+  .about-works-swiper .swiper-wrapper {
+    align-items: center;
+  }
+
+  .about-works-swiper .swiper-slide {
+    transition: opacity 700ms ease, transform 700ms ease;
+  }
+
+  .about-works-swiper .about-work-card {
+    opacity: 0.42;
+    transform: scale(0.82);
+    transform-origin: center;
+    transition: opacity 700ms ease, transform 700ms ease, filter 700ms ease;
+    filter: saturate(0.78);
+  }
+
+  .about-works-swiper .swiper-slide-active .about-work-card {
+    opacity: 1;
+    transform: scale(1);
+    filter: saturate(1);
+  }
+
+  @media (max-width: 767px) {
+    .about-hero-copy,
+    .about-hero-copy p {
+      width: calc(100vw - 48px) !important;
+      max-width: calc(100vw - 48px) !important;
+      min-width: 0 !important;
+      white-space: normal !important;
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+  }
+
+  .client-highlight-name {
+    animation: client-highlight-pop 640ms ease;
+  }
+
+  .about-story-scroller {
+    scrollbar-width: none;
+  }
+
+  .about-story-scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pricing-hero-currency-outline {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 46px rgba(0, 0, 0, 0.08);
+  }
+
+  @keyframes client-highlight-pop {
+    0% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
