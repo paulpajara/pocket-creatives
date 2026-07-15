@@ -47,37 +47,36 @@ export const worksPortfolioPage = {
   ],
   featured: [
     {
-      eyebrow: "Photo Comp",
-      title: "Photography Campaign",
-      type: "Photo",
-      image: asset("works/portfolio/works-gallery-photo-comp.jpg"),
-      alt: "Stacked beauty pots on a yellow set",
-      width: 360
+      eyebrow: "Soap & Glory",
+      title: "Beauty Product Campaign",
+      type: "Photography",
+      image: asset("works/portfolio/soap-and-glory.gif"),
+      alt: "Soap and Glory beauty campaign",
+      width: 460
     },
     {
       eyebrow: "HairO Brand Advert",
       title: "Beauty Video Production",
       type: "Video",
-      image: null,
-      alt: "Yellow campaign placeholder",
-      width: 800,
-      fill: "yellow"
+      video: asset("works/portfolio/hairo-brand-advert.com.mp4"),
+      alt: "HairO beauty brand advert",
+      width: 800
     },
     {
       eyebrow: "Nursem",
       title: "People & Portrait Photography",
-      type: "Photo",
-      image: asset("works/portfolio/works-image95.jpg"),
-      alt: "Beauty model smiling in a campaign image",
-      width: 300
+      type: "Photography",
+      image: asset("works/portfolio/nursem.png"),
+      alt: "Nursem portrait campaign",
+      width: 360
     },
     {
-      eyebrow: "Soap And Glory",
-      title: "People & Portrait Photography",
-      type: "Photo Comp",
-      image: asset("works/portfolio/works-image97.jpg"),
-      alt: "Soap and Glory skincare products on a pink set",
-      width: 450
+      eyebrow: "Photo Comp",
+      title: "Beauty Product Photography",
+      type: "Photography",
+      image: asset("works/portfolio/works-gallery-photo-comp.jpg"),
+      alt: "Stacked beauty pots on a yellow set",
+      width: 600
     }
   ],
   categoryIntro: {
@@ -90,18 +89,18 @@ export const worksPortfolioPage = {
     ]
   },
   videoItems: [
-    { title: "Client 1.1", image: asset("video-beauty-desktop-thumb.png"), alt: "Beauty video thumbnail with skincare model" },
-    { title: "Client 1.2", image: asset("works/portfolio/works-rect-130.jpg"), alt: "Ayumi skincare products arranged in a circle" },
-    { title: "Client 2", image: asset("video-food-drink-thumb.png"), alt: "Tortilla video thumbnail" },
-    { title: "Client 3.1", image: asset("video-sample-3.png"), alt: "Food video production thumbnail" },
-    { title: "Client 3.2", image: asset("video-beauty-thumb.png"), alt: "Gatineau beauty video thumbnail" },
-    { title: "Client 3.3", image: asset("hero-director-a.png"), alt: "Production director in a studio" },
-    { title: "Client 4", image: asset("video-carousel.png"), alt: "Mixed video production thumbnails" },
-    { title: "Client 5", image: asset("hero-video.png"), alt: "Pocket Creatives billboard" },
-    { title: "Client 6.1", image: asset("works/portfolio/works-rect-133.jpg"), alt: "Soap product under water" },
-    { title: "Client 6.2", image: asset("video-beauty-desktop-thumb.png"), alt: "Beauty video thumbnail" },
-    { title: "Client 7", image: asset("works/portfolio/works-rect-130.jpg"), alt: "Ayumi skincare product video thumbnail" },
-    { title: "Client 8", image: asset("video-food-drink-thumb.png"), alt: "Tortilla video thumbnail" }
+    { title: "Ayumi Behind the Scenes", video: asset("works/portfolio/client-video/behind-the-scenes-with-ayumi-vidburner.com.mp4"), alt: "Behind the scenes of an Ayumi beauty production" },
+    { title: "Ayumi Campaign", video: asset("works/portfolio/client-video/behind-the-scenes-with-ayumi-vidburner.com (1).mp4"), alt: "Ayumi skincare campaign video" },
+    { title: "BiM's Tasty Wraps", video: asset("works/portfolio/client-video/bims-tasty-wraps-vidburner.com.mp4"), alt: "BiM's Tasty Wraps campaign video" },
+    { title: "BiM's Social Campaign", video: asset("works/portfolio/client-video/bims-tasty-wraps-vidburner.com (1).mp4"), alt: "BiM's Tasty Wraps social video" },
+    { title: "California Walnuts", video: asset("works/portfolio/client-video/california-walnuts-christmas-tv-ad-vidburner.com.mp4"), alt: "California Walnuts Christmas television advert" },
+    { title: "Gatineau Paris", video: asset("works/portfolio/client-video/gatineau-paris-video-1-vidburner.com.mp4"), alt: "Gatineau Paris beauty campaign" },
+    { title: "Hygie Crowdfunding", video: asset("works/portfolio/client-video/hygie-crowdfunding-video-vidburner.com.mp4"), alt: "Hygie crowdfunding campaign video" },
+    { title: "Little Cooks Co", video: asset("works/portfolio/client-video/little-cooks-co-tv-ad-vidburner.com.mp4"), alt: "Little Cooks Co television advert" },
+    { title: "Pocket Creatives", video: asset("works/portfolio/client-video/Pocket Creatives Brand Film (1).mp4"), alt: "Pocket Creatives brand film" },
+    { title: "Pancake Day", video: asset("works/portfolio/client-video/pocket-pancake-day-vidburner.com.mp4"), alt: "Pocket Creatives Pancake Day video" },
+    { title: "Pancake Day Campaign", video: asset("works/portfolio/client-video/pocket-pancake-day-vidburner.com (1).mp4"), alt: "Pancake Day social campaign" },
+    { title: "Vida Glow at Vogue", video: asset("works/portfolio/client-video/vida-glow-at-vogue-vidburner.com.mp4"), alt: "Vida Glow at Vogue event video" }
   ],
   photoItems: [
     { title: "Client 1.1", image: asset("works/portfolio/works-image97.jpg"), alt: "Beauty products on a pink display" },

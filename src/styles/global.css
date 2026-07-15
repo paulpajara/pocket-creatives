@@ -111,6 +111,29 @@
     transform: none;
   }
 
+  .portfolio-thumbnail-strip {
+    scrollbar-color: #ffbd18 #303030;
+    scrollbar-width: thin;
+  }
+
+  .portfolio-thumbnail-strip::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .portfolio-thumbnail-strip::-webkit-scrollbar-track {
+    background: #303030;
+  }
+
+  .portfolio-thumbnail-strip::-webkit-scrollbar-thumb {
+    background: #ffbd18;
+  }
+
+  @media (min-width: 1024px) {
+    .works-featured-swiper .swiper-slide {
+      width: var(--works-slide-width) !important;
+    }
+  }
+
   @media (max-width: 767px) {
     .about-hero-copy,
     .about-hero-copy p {
