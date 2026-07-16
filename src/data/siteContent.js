@@ -89,32 +89,32 @@ export const worksPortfolioPage = {
     ]
   },
   videoItems: [
-    { title: "Ayumi Behind the Scenes", video: asset("works/portfolio/client-video/behind-the-scenes-with-ayumi-vidburner.com.mp4"), alt: "Behind the scenes of an Ayumi beauty production" },
-    { title: "Ayumi Campaign", video: asset("works/portfolio/client-video/behind-the-scenes-with-ayumi-vidburner.com (1).mp4"), alt: "Ayumi skincare campaign video" },
-    { title: "BiM's Tasty Wraps", video: asset("works/portfolio/client-video/bims-tasty-wraps-vidburner.com.mp4"), alt: "BiM's Tasty Wraps campaign video" },
-    { title: "BiM's Social Campaign", video: asset("works/portfolio/client-video/bims-tasty-wraps-vidburner.com (1).mp4"), alt: "BiM's Tasty Wraps social video" },
-    { title: "California Walnuts", video: asset("works/portfolio/client-video/california-walnuts-christmas-tv-ad-vidburner.com.mp4"), alt: "California Walnuts Christmas television advert" },
-    { title: "Gatineau Paris", video: asset("works/portfolio/client-video/gatineau-paris-video-1-vidburner.com.mp4"), alt: "Gatineau Paris beauty campaign" },
-    { title: "Hygie Crowdfunding", video: asset("works/portfolio/client-video/hygie-crowdfunding-video-vidburner.com.mp4"), alt: "Hygie crowdfunding campaign video" },
-    { title: "Little Cooks Co", video: asset("works/portfolio/client-video/little-cooks-co-tv-ad-vidburner.com.mp4"), alt: "Little Cooks Co television advert" },
-    { title: "Pocket Creatives", video: asset("works/portfolio/client-video/Pocket Creatives Brand Film (1).mp4"), alt: "Pocket Creatives brand film" },
-    { title: "Pancake Day", video: asset("works/portfolio/client-video/pocket-pancake-day-vidburner.com.mp4"), alt: "Pocket Creatives Pancake Day video" },
-    { title: "Pancake Day Campaign", video: asset("works/portfolio/client-video/pocket-pancake-day-vidburner.com (1).mp4"), alt: "Pancake Day social campaign" },
-    { title: "Vida Glow at Vogue", video: asset("works/portfolio/client-video/vida-glow-at-vogue-vidburner.com.mp4"), alt: "Vida Glow at Vogue event video" }
+    { title: "Client 1", video: asset("works/portfolio/client-video/behind-the-scenes-with-ayumi-vidburner.com.mp4"), alt: "Behind the scenes of an Ayumi beauty production" },
+    { title: "Client 2", video: asset("works/portfolio/client-video/behind-the-scenes-with-ayumi-vidburner.com (1).mp4"), alt: "Ayumi skincare campaign video" },
+    { title: "Client 3", video: asset("works/portfolio/client-video/bims-tasty-wraps-vidburner.com.mp4"), alt: "BiM's Tasty Wraps campaign video" },
+    { title: "Client 4", video: asset("works/portfolio/client-video/bims-tasty-wraps-vidburner.com (1).mp4"), alt: "BiM's Tasty Wraps social video" },
+    { title: "Client 5", video: asset("works/portfolio/client-video/california-walnuts-christmas-tv-ad-vidburner.com.mp4"), alt: "California Walnuts Christmas television advert" },
+    { title: "Client 6", video: asset("works/portfolio/client-video/gatineau-paris-video-1-vidburner.com.mp4"), alt: "Gatineau Paris beauty campaign" },
+    { title: "Client 7", video: asset("works/portfolio/client-video/hygie-crowdfunding-video-vidburner.com.mp4"), alt: "Hygie crowdfunding campaign video" },
+    { title: "Client 8", video: asset("works/portfolio/client-video/little-cooks-co-tv-ad-vidburner.com.mp4"), alt: "Little Cooks Co television advert" },
+    { title: "Client 9", video: asset("works/portfolio/client-video/Pocket Creatives Brand Film (1).mp4"), alt: "Pocket Creatives brand film" },
+    { title: "Client 10", video: asset("works/portfolio/client-video/pocket-pancake-day-vidburner.com.mp4"), alt: "Pocket Creatives Pancake Day video" },
+    { title: "Client 11", video: asset("works/portfolio/client-video/pocket-pancake-day-vidburner.com (1).mp4"), alt: "Pancake Day social campaign" },
+    { title: "Client 12", video: asset("works/portfolio/client-video/vida-glow-at-vogue-vidburner.com.mp4"), alt: "Vida Glow at Vogue event video" }
   ],
   photoItems: [
-    { title: "Client 1.1", image: asset("works/portfolio/works-image97.jpg"), alt: "Beauty products on a pink display" },
-    { title: "Client 1.2", image: asset("works/portfolio/works-rect-126.jpg"), alt: "Makeup artist applying lipstick" },
-    { title: "Client 2", image: asset("works/portfolio/works-rect-127.jpg"), alt: "Beauty portrait in water" },
-    { title: "Client 3.1", image: asset("works/portfolio/works-rect-128.jpg"), alt: "Pressed cosmetic powder close up" },
-    { title: "Client 3.2", image: asset("works/portfolio/works-rect-129.jpg"), alt: "Cosmetic bottle with purple backdrop" },
-    { title: "Client 4", image: asset("works/portfolio/works-rect-130.jpg"), alt: "Ayumi products arranged around a bowl" },
-    { title: "Client 5.1", image: asset("works/portfolio/works-rect-131.jpg"), alt: "Soft beauty portrait" },
-    { title: "Client 5.2", image: asset("works/portfolio/works-rect-132.jpg"), alt: "Holy Lama skincare product" },
-    { title: "Client 6", image: asset("works/portfolio/works-rect-133.jpg"), alt: "Soap product under water" },
-    { title: "Client 7.1", image: asset("works/portfolio/works-rect-134.jpg"), alt: "Beauty portrait with colourful makeup" },
-    { title: "Client 7.2", image: asset("works/portfolio/works-rect-135.jpg"), alt: "Beauty model in black lingerie" },
-    { title: "Client 8", image: asset("works/portfolio/works-rect-136.jpg"), alt: "Makeup artist applying eye makeup" }
+    { title: "Client 1", image: asset("works/portfolio/works-image97.jpg"), alt: "Beauty products on a pink display" },
+    { title: "Client 2", image: asset("works/portfolio/works-rect-126.jpg"), alt: "Makeup artist applying lipstick" },
+    { title: "Client 3", image: asset("works/portfolio/works-rect-127.jpg"), alt: "Beauty portrait in water" },
+    { title: "Client 4", image: asset("works/portfolio/works-rect-128.jpg"), alt: "Pressed cosmetic powder close up" },
+    { title: "Client 5", image: asset("works/portfolio/works-rect-129.jpg"), alt: "Cosmetic bottle with purple backdrop" },
+    { title: "Client 6", image: asset("works/portfolio/works-rect-130.jpg"), alt: "Ayumi products arranged around a bowl" },
+    { title: "Client 7", image: asset("works/portfolio/works-rect-131.jpg"), alt: "Soft beauty portrait" },
+    { title: "Client 8", image: asset("works/portfolio/works-rect-132.jpg"), alt: "Holy Lama skincare product" },
+    { title: "Client 9", image: asset("works/portfolio/works-rect-133.jpg"), alt: "Soap product under water" },
+    { title: "Client 10", image: asset("works/portfolio/works-rect-134.jpg"), alt: "Beauty portrait with colourful makeup" },
+    { title: "Client 11", image: asset("works/portfolio/works-rect-135.jpg"), alt: "Beauty model in black lingerie" },
+    { title: "Client 12", image: asset("works/portfolio/works-rect-136.jpg"), alt: "Makeup artist applying eye makeup" }
   ]
 };
 
