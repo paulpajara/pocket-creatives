@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ArrowDown, ArrowRight, Pause, Play } from "lucide-react";
-import { Autoplay } from "swiper/modules";
 import { worksPortfolioPage } from "../../data/siteContent";
 import { cn } from "../../utils/cn";
 import { CarouselTrack, SwiperSlide } from "../CarouselTrack";
@@ -8,8 +7,8 @@ import { PortfolioLightbox } from "./PortfolioLightbox";
 
 function CategoryNav() {
   return (
-    <nav className="mt-8 overflow-x-auto px-5 pb-2 lg:mx-auto lg:max-w-[1280px] lg:overflow-visible lg:px-8" aria-label="Portfolio categories">
-      <div className="mx-auto flex w-max items-center gap-x-6 text-[14px] font-extrabold leading-none text-pocket-muted lg:w-auto lg:flex-wrap lg:justify-center lg:gap-y-4">
+    <nav className="mt-12 px-5 lg:mx-auto lg:mt-8 lg:max-w-[1280px] lg:px-8" aria-label="Portfolio categories">
+      <div className="mx-auto flex max-w-[480px] flex-wrap items-center justify-center gap-x-7 gap-y-6 text-[18px] font-normal leading-none text-black lg:max-w-none lg:gap-x-6 lg:gap-y-4 lg:text-[16px] lg:text-pocket-muted">
         {worksPortfolioPage.categories.map((category) => {
           const isActive = category === "Beauty";
 
@@ -74,31 +73,28 @@ function PortfolioMedia({ item, className, controls = false, eager = false }) {
 function WorkCard({ item }) {
   return (
     <article className="w-full">
-      <div className="h-[330px] w-full overflow-hidden bg-pocket-yellow sm:h-[390px] xl:h-[450px]">
+      <div className="aspect-video w-full overflow-hidden bg-pocket-yellow sm:aspect-auto sm:h-[390px] xl:h-[450px]">
         <PortfolioMedia item={item} />
       </div>
-      <div className="mt-3 flex items-center justify-between gap-4 text-[13px] font-bold leading-none text-pocket-muted sm:text-[14px]">
+      <div className="mt-2 flex items-center justify-between gap-4 text-[16px] font-normal leading-none text-black sm:mt-3 sm:text-[14px] sm:font-bold sm:text-pocket-muted">
         <span>{item.eyebrow}</span>
-        <span className="shrink-0">{item.type}</span>
+        <span className="hidden shrink-0 sm:inline">{item.type}</span>
       </div>
     </article>
   );
 }
 
-function FeaturedReel({ onSwiper }) {
+function FeaturedReel({ onSwiper, paused }) {
   const featuredItems = Array.from({ length: 3 }, () => worksPortfolioPage.featured).flat();
 
   return (
-    <div className="mt-9 h-[390px] overflow-hidden sm:mt-12 sm:h-[460px] xl:mt-[54px] xl:h-[500px]">
+    <div className="mt-10 overflow-hidden sm:mt-12 sm:h-[460px] xl:mt-[54px] xl:h-[500px]">
       <CarouselTrack
-        modules={[Autoplay]}
-        className="works-featured-swiper h-full"
+        className={cn("works-featured-swiper h-full", paused && "is-paused")}
         overflowVisible={false}
         freeMode={false}
-        loop
-        centeredSlides
-        speed={900}
-        autoplay={{ delay: 2800, disableOnInteraction: false, pauseOnMouseEnter: false, stopOnLastSlide: false }}
+        grabCursor={false}
+        allowTouchMove={false}
         spaceBetween={24}
         breakpoints={{
           640: { spaceBetween: 40 },
@@ -110,7 +106,7 @@ function FeaturedReel({ onSwiper }) {
         {featuredItems.map((item, index) => (
           <SwiperSlide
             key={`${item.title}-${index}`}
-            className="!w-[78vw] !max-w-[360px] sm:!w-[62vw] lg:!w-auto lg:!max-w-none"
+            className="!w-[92vw] !max-w-none sm:!w-[62vw] lg:!w-auto"
             style={{ "--works-slide-width": `${item.width}px` }}
           >
             <WorkCard item={item} />
@@ -126,14 +122,25 @@ function WorksHero() {
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (!swiper?.autoplay || swiper.destroyed) return;
+    if (!swiper?.wrapperEl || swiper.destroyed) return undefined;
 
-    if (paused) {
-      swiper.autoplay.stop();
-    } else {
-      swiper.autoplay.start();
-    }
-  }, [paused, swiper]);
+    const updateLoop = () => {
+      const slides = Array.from(swiper.slides || []);
+      const repeatedSlide = slides[worksPortfolioPage.featured.length];
+      if (!slides[0] || !repeatedSlide) return;
+
+      const distance = repeatedSlide.offsetLeft - slides[0].offsetLeft;
+      const duration = Math.max(14, distance / 78);
+      swiper.wrapperEl.style.setProperty("--works-loop-distance", `${distance}px`);
+      swiper.wrapperEl.style.setProperty("--works-loop-duration", `${duration}s`);
+    };
+
+    updateLoop();
+    const resizeObserver = new ResizeObserver(updateLoop);
+    resizeObserver.observe(swiper.el);
+
+    return () => resizeObserver.disconnect();
+  }, [swiper]);
 
   const setSwiper = useCallback((swiperInstance) => {
     setSwiperInstance(swiperInstance);
@@ -142,18 +149,21 @@ function WorksHero() {
   return (
     <section className="overflow-hidden bg-pocket-canvas pb-10 pt-[132px] sm:pt-[142px] lg:pb-[52px] lg:pt-[154px]">
       <div className="mx-auto max-w-[1920px]">
-        <h1 className="text-center text-[30px] font-extrabold leading-none text-pocket-blue sm:text-[32px]">
+        <h1 className="text-center text-[30px] font-extrabold leading-none text-black sm:text-[32px] sm:text-pocket-blue">
           View By Category
         </h1>
         <CategoryNav />
-        <FeaturedReel onSwiper={setSwiper} />
+        <FeaturedReel onSwiper={setSwiper} paused={paused} />
 
-        <div id="beauty" className="mx-auto mt-6 flex max-w-[1368px] items-center justify-between px-6 sm:mt-8 sm:px-9 xl:mt-10 xl:px-0">
-          <h2 className="text-[50px] font-extrabold leading-none text-pocket-blue sm:text-[64px] xl:text-[72px]">BEAUTY</h2>
+        <div id="beauty" className="mx-auto mt-12 flex max-w-[1368px] items-start justify-between px-6 sm:mt-8 sm:items-center sm:px-9 xl:mt-10 xl:px-0">
+          <div>
+            <h2 className="text-[50px] font-extrabold leading-none text-pocket-blue sm:text-[64px] xl:text-[72px]">BEAUTY</h2>
+            <p className="mt-3 text-[16px] font-normal leading-tight text-black sm:hidden">Tap on a Video/Photo for larger view</p>
+          </div>
           <button
             type="button"
             onClick={() => setPaused((value) => !value)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-pocket-yellow text-black shadow-button transition-colors hover:bg-pocket-blue hover:text-white sm:h-10 sm:w-10"
+            className="mt-1 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-pocket-yellow text-black shadow-button transition-colors hover:bg-pocket-blue hover:text-white sm:mt-0 sm:h-10 sm:w-10"
             aria-label={paused ? "Play works carousel" : "Pause works carousel"}
             aria-pressed={paused}
           >
@@ -228,7 +238,6 @@ function VideoGrid({ onOpen }) {
       <div className="mx-auto max-w-[1368px] px-6 sm:px-9 xl:px-0">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <h2 className="text-[40px] font-extrabold leading-none tracking-normal text-pocket-blue sm:text-[36px]">Beauty Videography</h2>
-          <p className="text-[12px] font-bold leading-none text-pocket-muted sm:mt-3">*Click on Video to play in large view</p>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
           {worksPortfolioPage.videoItems.map((item, index) => (
@@ -256,7 +265,6 @@ function PhotographyGrid({ onOpen }) {
         <div className="mt-20 sm:mt-28 xl:mt-[144px]">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <h3 className="text-[38px] font-extrabold leading-none tracking-normal text-pocket-blue sm:text-[36px]">Beauty Photography</h3>
-            <p className="text-[12px] font-bold leading-none text-pocket-muted sm:mt-3">*Click on thumbnail for large view</p>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-5 lg:grid-cols-6">
             {worksPortfolioPage.photoItems.map((item, index) => (

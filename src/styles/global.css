@@ -98,6 +98,12 @@
 
   .works-featured-swiper .swiper-wrapper {
     align-items: center;
+    animation: works-featured-loop var(--works-loop-duration, 26s) linear infinite;
+    will-change: transform;
+  }
+
+  .works-featured-swiper.is-paused .swiper-wrapper {
+    animation-play-state: paused;
   }
 
   .works-featured-swiper .swiper-slide {
@@ -173,6 +179,16 @@
     100% {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes works-featured-loop {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(calc(-1 * var(--works-loop-distance, 1600px)), 0, 0);
     }
   }
 }
