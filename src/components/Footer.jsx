@@ -8,7 +8,7 @@ const footerLinks = [
   { label: "SERVICES", href: "/services/" },
   { label: "PRICING", href: "/pricing/" },
   { label: "CONTACT", href: "/contact/" },
-  { label: "BLOGS", href: "#" }
+  { label: "BLOGS", href: "/blogs/" }
 ];
 
 const wideLinks = [
