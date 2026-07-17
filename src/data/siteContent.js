@@ -82,7 +82,7 @@ export const worksPortfolioPage = {
   categoryIntro: {
     title: "Category: Beauty",
     copy:
-      "Beauty is where details matter. Texture, tone, skin, product finish and movement all need to feel considered, so we plan each shoot around the visual quality the brand needs to communicate. From social-first films to clean product photography, our team builds content that feels polished, useful and ready to perform.",
+      "Lorem ipsum dolor sit amet consectetur. Nulla purus rhoncus at mattis. Et ac vitae ornare volutpat. Mollis sem scelerisque dictum nunc iaculis vivamus donec. Molestie sed mattis aenean sit arcu ipsum amet vulputate tellus. Blandit pellentesque magna egestas eget rhoncus tincidunt. In ultrices velit et velit morbi vitae dolor fames. Rhoncus.",
     links: [
       { label: "Beauty Videography", href: "#beauty-videography" },
       { label: "Beauty Photography", href: "#beauty-photography" }

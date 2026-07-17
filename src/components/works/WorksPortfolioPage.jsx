@@ -158,7 +158,6 @@ function WorksHero() {
         <div id="beauty" className="mx-auto mt-12 flex max-w-[1368px] items-start justify-between px-6 sm:mt-8 sm:items-center sm:px-9 xl:mt-10 xl:px-0">
           <div>
             <h2 className="text-[50px] font-extrabold leading-none text-pocket-blue sm:text-[64px] xl:text-[72px]">BEAUTY</h2>
-            <p className="mt-3 text-[16px] font-normal leading-tight text-black sm:hidden">Tap on a Video/Photo for larger view</p>
           </div>
           <button
             type="button"
