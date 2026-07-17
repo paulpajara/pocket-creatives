@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { CarouselTrack, SwiperSlide } from "../CarouselTrack";
 import { featuredBlogPosts } from "../../data/blogContent";
 
@@ -32,12 +32,22 @@ function FeaturedBlogCard({ post }) {
 
 export function FeaturedBlogCarousel() {
   const [swiper, setSwiper] = useState(null);
+  const [navigation, setNavigation] = useState({ isBeginning: true, isEnd: false });
+
+  const syncNavigation = (instance) => {
+    setNavigation({ isBeginning: instance.isBeginning, isEnd: instance.isEnd });
+  };
 
   return (
     <section id="featured-blogs" className="h-[800px] overflow-hidden bg-pocket-canvas pt-[125px] desktop:h-[940px] desktop:pt-[112px] wide:h-[1142px] wide:pt-[148px]">
       <div className="mx-auto w-full max-w-[1440px]">
         <CarouselTrack
-          onSwiper={setSwiper}
+          onSwiper={(instance) => {
+            setSwiper(instance);
+            syncNavigation(instance);
+          }}
+          onSlideChange={syncNavigation}
+          onResize={syncNavigation}
           freeMode={false}
           speed={700}
           slidesPerView="auto"
@@ -61,14 +71,29 @@ export function FeaturedBlogCarousel() {
           ))}
         </CarouselTrack>
 
-        <button
-          type="button"
-          onClick={() => swiper?.slideNext()}
-          className="mx-auto mt-7 flex h-12 w-12 items-center justify-center rounded-full bg-pocket-blue text-white shadow-button transition-colors hover:bg-pocket-yellow hover:text-black desktop:mt-9 desktop:h-14 desktop:w-14 wide:mt-10"
-          aria-label="Show next featured article"
-        >
-          <ArrowRight className="h-7 w-7" aria-hidden="true" />
-        </button>
+        <div className="mx-auto mt-7 flex min-h-12 items-center justify-center gap-3 desktop:mt-9 desktop:min-h-14 wide:mt-10">
+          {!navigation.isBeginning && (
+            <button
+              type="button"
+              onClick={() => swiper?.slidePrev()}
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-pocket-blue text-white shadow-button transition-colors hover:bg-pocket-yellow hover:text-black desktop:h-14 desktop:w-14"
+              aria-label="Show previous featured article"
+            >
+              <ArrowLeft className="h-7 w-7" aria-hidden="true" />
+            </button>
+          )}
+
+          {!navigation.isEnd && (
+            <button
+              type="button"
+              onClick={() => swiper?.slideNext()}
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-pocket-blue text-white shadow-button transition-colors hover:bg-pocket-yellow hover:text-black desktop:h-14 desktop:w-14"
+              aria-label="Show next featured article"
+            >
+              <ArrowRight className="h-7 w-7" aria-hidden="true" />
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );
