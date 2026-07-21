@@ -11,7 +11,7 @@ function FeaturedBlogCard({ post }) {
         alt=""
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.015]"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-pocket-yellow via-pocket-yellow/80 to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,#fcbe17_0%,#fcbe17_20%,rgba(252,190,23,0.92)_29%,rgba(252,190,23,0.55)_39%,rgba(252,190,23,0.18)_48%,transparent_56%)]" />
       <div className="absolute bottom-7 left-6 right-6 desktop:bottom-[50px] desktop:left-[55px] desktop:right-[55px] wide:bottom-[53px] wide:left-[80px] wide:right-[80px]">
         <h2 className="inline box-decoration-clone bg-pocket-blue px-3 py-1 text-[24px] font-extrabold leading-[1.18] text-white desktop:px-4 desktop:py-2 desktop:text-[32px] wide:text-[36px]">
           {post.title}
