@@ -1,35 +1,42 @@
-import React, { useState } from "react";
-import { ArrowRight, PoundSterling, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight, PoundSterling } from "lucide-react";
+import { CarouselTrack, SwiperSlide } from "../CarouselTrack";
 import { trainingCourses } from "../../data/trainingContent";
 
-function CourseCard({ course, index, isOpen, onToggle }) {
+function CourseCard({ course, index, isOpen, onOpen, onClose }) {
   return (
-    <article
-      className={`relative min-h-[330px] overflow-hidden transition-colors duration-300 wide:min-h-[420px] mobile:min-h-0 ${
-        isOpen ? "bg-pocket-blue text-white" : "bg-pocket-yellow text-black"
-      }`}
-    >
+    <article className="flex h-[350px] w-full overflow-hidden wide:h-[420px] mobile:h-auto mobile:flex-col">
       <button
         type="button"
-        onClick={onToggle}
-        className="flex min-h-[330px] w-full items-end justify-between gap-6 p-10 text-left wide:min-h-[420px] wide:p-12 mobile:min-h-[250px] mobile:p-8"
+        onClick={onOpen}
+        className="flex h-full w-[350px] shrink-0 items-center justify-between gap-8 bg-pocket-yellow p-10 text-left text-black wide:w-[420px] wide:p-12 mobile:h-[270px] mobile:w-full mobile:p-8"
         aria-expanded={isOpen}
         aria-controls={`course-examples-${index}`}
       >
-        <span className="max-w-[270px] text-[28px] font-extrabold leading-[0.98] tracking-[-1.4px] wide:text-[34px] wide:tracking-[-1.7px] mobile:text-[30px] mobile:tracking-[-1.5px]">
+        <span className="max-w-[245px] text-[30px] font-extrabold leading-[0.98] wide:max-w-[300px] wide:text-[38px] mobile:max-w-[245px] mobile:text-[31px]">
           {course.title}
         </span>
-        {isOpen ? <X className="h-9 w-9 shrink-0" /> : <ArrowRight className="h-10 w-10 shrink-0" />}
+        <ArrowRight className="h-11 w-11 shrink-0 stroke-[2.4]" aria-hidden="true" />
       </button>
 
       {isOpen && (
-        <div id={`course-examples-${index}`} className="border-t border-white/50 px-10 pb-10 pt-7 wide:px-12 wide:pb-12 mobile:px-8">
-          <p className="text-[16px] font-extrabold uppercase tracking-[0.08em]">Course examples</p>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-[18px] font-medium leading-[1.2]">
+        <div
+          id={`course-examples-${index}`}
+          className="relative flex h-full min-w-0 flex-1 items-center bg-pocket-blue px-14 py-10 text-white wide:px-20 mobile:min-h-[310px] mobile:w-full mobile:px-9 mobile:py-10"
+        >
+          <ul className="list-disc space-y-1 pl-7 text-[30px] font-extrabold leading-[1.02] wide:text-[38px] mobile:text-[25px] mobile:leading-[1.05]">
             {course.examples.map((example) => (
               <li key={example}>{example}</li>
             ))}
           </ul>
+          <button
+            type="button"
+            onClick={onClose}
+            className="absolute bottom-8 right-10 flex h-12 w-12 items-center justify-center transition-transform hover:-translate-x-1 mobile:bottom-5 mobile:right-6"
+            aria-label={`Close ${course.title} course examples`}
+          >
+            <ArrowLeft className="h-11 w-11 stroke-[2.4]" aria-hidden="true" />
+          </button>
         </div>
       )}
     </article>
@@ -38,34 +45,67 @@ function CourseCard({ course, index, isOpen, onToggle }) {
 
 export function TrainingCourses({ onContactClick }) {
   const [openCourse, setOpenCourse] = useState(null);
+  const [swiper, setSwiper] = useState(null);
+
+  useEffect(() => {
+    if (!swiper) return undefined;
+
+    const timer = window.setTimeout(() => {
+      swiper.update();
+      if (openCourse !== null) swiper.slideTo(openCourse, 650);
+    }, 40);
+
+    return () => window.clearTimeout(timer);
+  }, [openCourse, swiper]);
 
   return (
-    <section id="example-courses" className="min-h-[850px] bg-pocket-canvas py-24 wide:min-h-[1052px] wide:py-[150px] mobile:min-h-0 mobile:py-20">
-      <div className="mx-auto w-full max-w-[1440px] px-8 wide:px-0 mobile:px-6">
-        <h2 className="text-center text-[80px] font-extrabold leading-none tracking-[-4px] text-pocket-muted wide:text-[120px] wide:tracking-[-6px] mobile:text-left mobile:text-[52px] mobile:tracking-[-2.6px]">
+    <section id="example-courses" className="min-h-[820px] overflow-hidden bg-pocket-canvas py-24 wide:min-h-[1052px] wide:py-[150px] mobile:min-h-0 mobile:py-20">
+      <div className="mx-auto w-full max-w-[1540px] px-8 wide:px-0 mobile:px-0">
+        <h2 className="px-8 text-center text-[80px] font-medium leading-none text-pocket-muted wide:text-[120px] mobile:px-6 mobile:text-left mobile:text-[52px]">
           Example Courses
         </h2>
 
-        <div className="mt-20 grid grid-cols-3 items-start gap-14 wide:mt-[92px] wide:gap-[72px] mobile:mt-12 mobile:grid-cols-1 mobile:gap-6">
-          {trainingCourses.map((course, index) => (
-            <CourseCard
-              key={course.title}
-              course={course}
-              index={index}
-              isOpen={openCourse === index}
-              onToggle={() => setOpenCourse((current) => (current === index ? null : index))}
-            />
-          ))}
-        </div>
+        <CarouselTrack
+          onSwiper={setSwiper}
+          className="mt-20 !overflow-visible wide:mt-[92px] mobile:mt-12"
+          slidesPerView="auto"
+          spaceBetween={48}
+          observer
+          observeParents
+        >
+          {trainingCourses.map((course, index) => {
+            const isOpen = openCourse === index;
 
-        <div className="mt-8 flex justify-end wide:mt-10 mobile:mt-10">
+            return (
+              <SwiperSlide
+                key={course.title}
+                className={isOpen
+                  ? "!w-[820px] wide:!w-[1020px] mobile:!w-[calc(100vw-48px)]"
+                  : "!w-[350px] wide:!w-[420px] mobile:!w-[calc(100vw-48px)]"}
+              >
+                <CourseCard
+                  course={course}
+                  index={index}
+                  isOpen={isOpen}
+                  onOpen={() => setOpenCourse(index)}
+                  onClose={(event) => {
+                    event.stopPropagation();
+                    setOpenCourse(null);
+                  }}
+                />
+              </SwiperSlide>
+            );
+          })}
+        </CarouselTrack>
+
+        <div className="mt-10 flex justify-end px-8 wide:px-0 mobile:mt-8 mobile:justify-center mobile:px-6">
           <button
             type="button"
             onClick={onContactClick}
-            className="inline-flex h-[78px] min-w-[220px] items-center justify-center gap-4 bg-pocket-yellow px-8 text-[22px] font-extrabold text-black shadow-button transition-colors hover:bg-pocket-blue hover:text-white mobile:h-16 mobile:min-w-[190px] mobile:text-[19px]"
+            className="inline-flex h-[78px] min-w-[240px] items-center justify-center gap-4 bg-pocket-yellow px-8 text-[22px] font-medium text-black shadow-button transition-colors hover:bg-pocket-blue hover:text-white mobile:h-16 mobile:min-w-[200px] mobile:text-[19px]"
           >
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-pocket-blue text-white mobile:h-9 mobile:w-9">
-              <PoundSterling className="h-6 w-6" aria-hidden="true" />
+            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-pocket-blue text-white mobile:h-10 mobile:w-10">
+              <PoundSterling className="h-7 w-7" aria-hidden="true" />
             </span>
             How Much?
           </button>
