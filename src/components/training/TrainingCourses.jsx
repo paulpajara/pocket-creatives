@@ -9,21 +9,27 @@ function CourseCard({ course, index, isOpen, onOpen, onClose }) {
       <button
         type="button"
         onClick={onOpen}
-        className="flex h-full w-[350px] shrink-0 items-center justify-between gap-8 bg-pocket-yellow p-10 text-left text-black wide:w-[420px] wide:p-12 mobile:h-[270px] mobile:w-full mobile:p-8"
+        className="group flex h-full w-[350px] shrink-0 items-center justify-between gap-8 bg-pocket-yellow p-10 text-left text-black wide:w-[420px] wide:p-12 mobile:h-[270px] mobile:w-full mobile:p-8"
         aria-expanded={isOpen}
         aria-controls={`course-examples-${index}`}
       >
         <span className="max-w-[245px] text-[30px] font-extrabold leading-[0.98] wide:max-w-[300px] wide:text-[38px] mobile:max-w-[245px] mobile:text-[31px]">
           {course.title}
         </span>
-        <ArrowRight className="h-11 w-11 shrink-0 stroke-[2.4]" aria-hidden="true" />
+        <ArrowRight
+          className={`h-11 w-11 shrink-0 stroke-[2.4] transition-transform duration-500 ease-out group-hover:translate-x-1 ${isOpen ? "rotate-180" : ""}`}
+          aria-hidden="true"
+        />
       </button>
 
-      {isOpen && (
-        <div
-          id={`course-examples-${index}`}
-          className="relative flex h-full min-w-0 flex-1 items-center bg-pocket-blue px-14 py-10 text-white wide:px-20 mobile:min-h-[310px] mobile:w-full mobile:px-9 mobile:py-10"
-        >
+      <div
+        id={`course-examples-${index}`}
+        aria-hidden={!isOpen}
+        className={`h-full shrink-0 overflow-hidden transition-[max-width,max-height,opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] mobile:w-full ${isOpen
+          ? "max-w-[470px] translate-x-0 opacity-100 wide:max-w-[600px] mobile:max-h-[420px] mobile:max-w-full mobile:translate-y-0"
+          : "pointer-events-none max-w-0 translate-x-5 opacity-0 mobile:max-h-0 mobile:max-w-full mobile:translate-x-0 mobile:translate-y-4"}`}
+      >
+        <div className="relative flex h-full w-[470px] items-center bg-pocket-blue px-14 py-10 text-white wide:w-[600px] wide:px-20 mobile:min-h-[310px] mobile:w-full mobile:px-9 mobile:py-10">
           <ul className="list-disc space-y-1 pl-7 text-[30px] font-extrabold leading-[1.02] wide:text-[38px] mobile:text-[25px] mobile:leading-[1.05]">
             {course.examples.map((example) => (
               <li key={example}>{example}</li>
@@ -32,13 +38,14 @@ function CourseCard({ course, index, isOpen, onOpen, onClose }) {
           <button
             type="button"
             onClick={onClose}
+            tabIndex={isOpen ? 0 : -1}
             className="absolute bottom-8 right-10 flex h-12 w-12 items-center justify-center transition-transform hover:-translate-x-1 mobile:bottom-5 mobile:right-6"
             aria-label={`Close ${course.title} course examples`}
           >
             <ArrowLeft className="h-11 w-11 stroke-[2.4]" aria-hidden="true" />
           </button>
         </div>
-      )}
+      </div>
     </article>
   );
 }
@@ -79,9 +86,9 @@ export function TrainingCourses({ onContactClick }) {
             return (
               <SwiperSlide
                 key={course.title}
-                className={isOpen
+                className={`transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen
                   ? "!w-[820px] wide:!w-[1020px] mobile:!w-[calc(100vw-48px)]"
-                  : "!w-[350px] wide:!w-[420px] mobile:!w-[calc(100vw-48px)]"}
+                  : "!w-[350px] wide:!w-[420px] mobile:!w-[calc(100vw-48px)]"}`}
               >
                 <CourseCard
                   course={course}
